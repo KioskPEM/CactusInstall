@@ -1,8 +1,11 @@
 #!/bin/bash
 
-echo "Installing dependencies..."
+echo "Updating packages..."
 apt update
-apt -y install apt-transport-https lsb-release ca-certificates curl unclutter beep
+apt upgrade
+
+echo "Installing dependencies..."
+apt -y install apt-transport-https lsb-release ca-certificates curl unzip unclutter beep
 
 echo "Installing XServer..."
 apt -y install xserver-xorg-video-all xserver-xorg-input-all xserver-xorg-core xinit x11-xserver-utils
@@ -29,7 +32,7 @@ echo "Installing PHP..."
 wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
 apt update
-apt -y install php7.4-fpm php7.4-curl php7.4-zip php7.4-mbstring
+apt -y install php-fpm php-curl php-zip php-mbstring
 
 echo "Downloading Cactus..."
 wget -O /home/kiosk-user/master.zip https://github.com/KioskPEM/Cactus/archive/master.zip
